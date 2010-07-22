@@ -65,11 +65,12 @@
 			</ul>
 
             <div id="facebook">
-                <fb:login-button id="faceboob_login" autologoutlink="true" perms="email, publish_stream, create_event, user_events, offline_access, read_stream"></fb:login-button>
+                <fb:login-button id="facebook_login" autologoutlink="true" perms="email, publish_stream, create_event, user_events, offline_access, read_stream"></fb:login-button>
                 <div id="facebook_menu">
                     <ul>
         		        <li><a href="#wall">Wall</a></li>
                         <li><a href="#events">Events</a></li>
+                        <li><a href="#profile">My Profile</a></li>
                         <li><a href="#more">More...</a></li>
 			        </ul>
 
@@ -98,6 +99,10 @@
                         {{ facebook_events|safe }}
                        {% endif %}
                        </ul>
+                    </div>
+
+                    <div id="profile">
+                        
                     </div>
 
                     <div id="more">
