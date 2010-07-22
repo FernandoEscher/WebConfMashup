@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     (r'^$', 'social.views.broadcast'),
     (r'^facebook-wall/$', 'social.views.facebook_wall'),
     (r'^facebook-events/$', 'social.views.facebook_events'),
+    (r'^facebook-profile/$', 'social.views.facebook_profile'),
     # Example:
     # (r'^mashup/', include('mashup.foo.urls')),
 

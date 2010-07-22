@@ -1,0 +1,22 @@
+<img src="https://graph.facebook.com/{{ uid }}/picture?type=large">
+
+<div class="profile-info">
+    <h2>{{ profile.name }}</h2>
+
+        <dl>
+            <dt><b>Email</b></dt>
+            <dd>{{ profile.email }}</dd>
+
+            <dt><b>Location</b></dt>
+            <dd>{{ profile.hometown.name }}</dd>
+
+            <dt><b>Education</b></dt>
+            {% for institution in profile.education %}
+                <dd>{{ institution.school.name }}</dd>
+            {% endfor %}
+
+            <dt><b>Quotes</b></dt>
+            <dd>{{ profile.quotes|linebreaksbr  }}</dd>
+        </dl>
+    </table>
+</div>

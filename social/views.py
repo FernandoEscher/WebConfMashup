@@ -64,8 +64,7 @@ def facebook_events(request):
                                  start_time=request.POST['start_time'],
                                  end_time=request.POST['end_time'])
                 return HttpResponse(json.dumps({'status': 'saved'}), mimetype="application/json")
-            else:
-                
+            else:                
                 return HttpResponse(json.dumps({'status': 'error'}), mimetype="application/json")
 
         else:
@@ -80,6 +79,15 @@ def facebook_events(request):
 
     else:
         return None
+
+
+def facebook_profile(request):
+    fb_user = facebook.get_user_from_cookie(request.COOKIES, settings.FACEBOOK_APP_ID, settings.FACEBOOK_APP_SECRET)
+
+    if fb_user:
+        graph = facebook.GraphAPI(fb_user["access_token"])
+        profile = graph.get_object("me")        
+        return HttpResponse(mark_safe(render_to_string('profile.html', {'profile':profile, 'uid':fb_user['uid']})))
 
 def broadcast(request):
     """Post the broadcast and return the result via JSON, or show the form"""

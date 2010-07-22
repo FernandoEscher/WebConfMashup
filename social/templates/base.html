@@ -40,6 +40,10 @@
                 $.get('/facebook-events/',function(data){
                     $('#facebook-events').html(data);
                 });
+
+                $.get('/facebook-profile/',function(data){                    
+                    $('#profile').html(data);
+                });
             } else {
                 $('#facebook-feed').html('');
                 $('#facebook-events').html('');
@@ -56,11 +60,10 @@
 	    </div>
 
 		<div id="menu">
-			<ul>	    
+			<ul>
+                <li><a href="#facebook">Facebook</a></li>
         		<li><a href="#google">Google</a></li>
                 <li><a href="#twitter">Twitter</a></li>                
-                <li><a href="#facebook">Facebook</a></li>
-
 			</ul>
 
             <div id="facebook">
@@ -69,8 +72,7 @@
                     <ul>
         		        <li><a href="#wall">Wall</a></li>
                         <li><a href="#events">Events</a></li>
-                        <li><a href="#profile">My Profile</a></li>
-                        <li><a href="#more">More...</a></li>
+                        <li><a href="#profile">My Profile</a></li>                        
 			        </ul>
 
                     <div id="wall">
@@ -103,12 +105,7 @@
                     <div id="profile">
                         
                     </div>
-
-                    <div id="more">
-                        <fb:friendpile></fb:friendpile>
-                        <fb:like-box profile_id="{{ FACEBOOK_APP_ID }}"></fb:like-box>
-                    </div>
-                    
+                                        
                 </div>
 			</div>
 
