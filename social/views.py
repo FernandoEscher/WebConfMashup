@@ -1,12 +1,12 @@
 # Create your views here.
 from django.shortcuts import render_to_response
-from social.forms import BroadcastForm, StatusForm, EventForm
+from social.forms import BroadcastForm, StatusForm, GEventForm, EventForm
 from django.utils.safestring import mark_safe
 from django.template.loader import render_to_string
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.conf import settings
-
+import datetime
 import facebook
 
 try:
@@ -107,7 +107,12 @@ def broadcast(request):
                                                 'facebook_wall': fb_wall,
                                                 'facebook_events': fb_events,
                                                 'status_form':status_form,
+                                                'gevent_form': GEventForm(initial = {'gevent_start': datetime.datetime.now().isoformat()[:-3],
+                                                                                    'gevent_end': (datetime.datetime.now()+
+                                                                                                   datetime.timedelta(hours=1)).isoformat()[:-3]
+                                                                                    }),
                                                 'event_form': event_form},context_instance=RequestContext(request))
+                                                
 
 def feeds(request):
     """Get a jsonlist of the feeds"""
